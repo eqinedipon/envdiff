@@ -52,6 +52,17 @@ Mismatched keys:
 | `--keys-only` | Only compare key names, ignore values |
 | `--quiet` | Suppress output, exit code reflects result |
 | `--json` | Output results as JSON |
+| `--ignore KEY` | Exclude a specific key from comparison (repeatable) |
+
+---
+
+## Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| `0` | No differences found |
+| `1` | Differences detected |
+| `2` | Error (e.g. file not found, parse failure) |
 
 ---
 
