@@ -58,6 +58,24 @@ func (o Options) Validate() error {
 	}
 }
 
+// WithFormat returns a copy of o with the Format field set to f.
+func (o Options) WithFormat(f Format) Options {
+	o.Format = f
+	return o
+}
+
+// WithColor returns a copy of o with the Color field set to c.
+func (o Options) WithColor(c bool) Options {
+	o.Color = c
+	return o
+}
+
+// WithRedact returns a copy of o with the Redact field set to r.
+func (o Options) WithRedact(r bool) Options {
+	o.Redact = r
+	return o
+}
+
 // UnknownFormatError is returned by Options.Validate when an unrecognised
 // output format is specified.
 type UnknownFormatError struct {
