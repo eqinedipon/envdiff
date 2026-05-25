@@ -80,3 +80,20 @@ func TestCompare_EmptyEnvs(t *testing.T) {
 		t.Errorf("expected no keys, got %d", len(res.Keys))
 	}
 }
+
+func TestCompare_KeysSorted(t *testing.T) {
+	envs := map[string]map[string]string{
+		"dev":  {"ZEBRA": "1", "ALPHA": "1", "MANGO": "1"},
+		"prod": {"ZEBRA": "1", "ALPHA": "1", "MANGO": "1"},
+	}
+	res := comparator.Compare(envs)
+	expected := []string{"ALPHA", "MANGO", "ZEBRA"}
+	if len(res.Keys) != len(expected) {
+		t.Fatalf("expected %d keys, got %d", len(expected), len(res.Keys))
+	}
+	for i, kr := range res.Keys {
+		if kr.Key != expected[i] {
+			t.Errorf("keys[%d]: expected %s, got %s", i, expected[i], kr.Key)
+		}
+	}
+}
